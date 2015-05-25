@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">ProjetoOS</string>
+
+    <string name="action_settings">Configurações</string>
+    <string name="titulo_app_main">Sistema de Controle de OS</string>
+    <string name="faca_login">Faça o Login Abaixo</string>
+    <string name="usuario">Usuário</string>
+    <string name="senha">Senha</string>
+    <string name="logar">Logar</string>
+    <string name="title_activity_opcoes">OpcoesActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="escolha_opcao">Escolha uma opção abaixo</string>
+    <string name="criar_os">Criar uma nova OS</string>
+    <string name="listagem_os">Selecione um nível para listagem de OS</string>
+    <string name="listagem_os_btn">Ir para Listagem</string>
+    <string name="niveis_prompt">Selecione um Nível</string>
+
+    <string-array name="niveis_array">
+        <item>Pré-Análise</item>
+        <item>BUG</item>
+        <item>Desenvolvimento</item>
+        <item>Suporte</item>
+    </string-array>
+    <string name="title_activity_listagem">ListagemActivity</string>
+    <string name="titulo_lista_os">Lista de OS - Nível</string>
+    <string name="voltar">Voltar</string>
+    <string name="title_activity_criar_user">CriarUserActivity</string>
+    <string name="nome_usuario">Nome do Usuário</string>
+    <string name="registrar">Registrar-se</string>
+
+</resources>
+
