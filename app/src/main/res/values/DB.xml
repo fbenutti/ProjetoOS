@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Departamentos -->
+    <string-array name="insertDepartamentoBD">
+        <item>"INSERT INTO codigo_departamento (id_departamento, descricao) VALUES (1, 'GESTÃO DE CLIENTES');"</item>
+        <item>"INSERT INTO codigo_departamento (id_departamento, descricao) VALUES (2, 'SUPORTE');"</item>
+        <item>"INSERT INTO codigo_departamento (id_departamento, descricao) VALUES (3, 'DESENVOLVIMENTO');"</item>
+        <item>"INSERT INTO codigo_departamento (id_departamento, descricao) VALUES (4, 'INFRAESTRUTURA');"</item>
+    </string-array>
+
+    <!-- Nivel -->
+    <string-array name="insertNivelBD">
+        <item>"INSERT INTO codigo_nivel (id_nivel, descricao) VALUES (0, 'Todos');"</item>
+        <item>"INSERT INTO codigo_nivel (id_nivel, descricao) VALUES (1, 'Suporte');"</item>
+        <item>"INSERT INTO codigo_nivel (id_nivel, descricao) VALUES (2, 'Banco');"</item>
+        <item>"INSERT INTO codigo_nivel (id_nivel, descricao) VALUES (3, 'Desenvolvimento');"</item>
+        <item>"INSERT INTO codigo_nivel (id_nivel, descricao) VALUES (4, 'Atualização');"</item>
+        <item>"INSERT INTO codigo_nivel (id_nivel, descricao) VALUES (5, 'Bug');"</item>
+        <item>"INSERT INTO codigo_nivel (id_nivel, descricao) VALUES (6, 'Pré-análise');"</item>
+        <item>"INSERT INTO codigo_nivel (id_nivel, descricao) VALUES (7, 'Resolução');"</item>
+        <item>"INSERT INTO codigo_nivel (id_nivel, descricao) VALUES (8, 'Concluídas');"</item>
+        <item>"INSERT INTO codigo_nivel (id_nivel, descricao) VALUES (9, 'Teste');"</item>
+        <item>"INSERT INTO codigo_nivel (id_nivel, descricao) VALUES (10, 'Infraestrutura');"</item>
+        <item>"INSERT INTO codigo_nivel (id_nivel, descricao) VALUES (11, 'Gestao');"</item>
+    </string-array>
+
+    <!-- Prioridade -->
+    <string-array name="insertPrioridadeBD">
+        <item>"INSERT INTO codigo_prioridade (id_prioridade, descricao) VALUES (1, 'mínima');"</item>
+        <item>"INSERT INTO codigo_prioridade (id_prioridade, descricao) VALUES (2, 'média');"</item>
+        <item>"INSERT INTO codigo_prioridade (id_prioridade, descricao) VALUES (3, 'máxima');"</item>
+        <item>"INSERT INTO codigo_prioridade (id_prioridade, descricao) VALUES (4, 'urgente');"</item>
+    </string-array>
+
+    <!-- Status -->
+    <string-array name="insertStatusBD">
+        <item>"INSERT INTO codigo_status (id_status, descricao) VALUES (1, 'pendente');"</item>
+        <item>"INSERT INTO codigo_status (id_status, descricao) VALUES (2, 'em andamento');"</item>
+        <item>"INSERT INTO codigo_status (id_status, descricao) VALUES (3, 'concluido');"</item>
+        <item>"INSERT INTO codigo_status (id_status, descricao) VALUES (4, 'não concluido');"</item>
+    </string-array>
+
+    <!-- Tipo Ação -->
+    <string-array name="insertTipoAcaoBD">
+        <item>"INSERT INTO codigo_tipo_acao (id_tipo_acao, descricao) VALUES (1, 'Comentário');"</item>
+        <item>"INSERT INTO codigo_tipo_acao (id_tipo_acao, descricao) VALUES (2, 'Troca Responsável');"</item>
+        <item>"INSERT INTO codigo_tipo_acao (id_tipo_acao, descricao) VALUES (3, 'Troca Nível');"</item>
+        <item>"INSERT INTO codigo_tipo_acao (id_tipo_acao, descricao) VALUES (4, 'Víncular');"</item>
+    </string-array>
+
+    <!-- Permissões -->
+    <string-array name="insertPermissoesBD">
+        <item>"INSERT INTO codigo_permissoes (id_permissao, descricao) VALUES (1, 'banco');"</item>
+        <item>"INSERT INTO codigo_permissoes (id_permissao, descricao) VALUES (2, 'desenvolvimento');"</item>
+        <item>"INSERT INTO codigo_permissoes (id_permissao, descricao) VALUES (3, 'pre_analise');"</item>
+        <item>"INSERT INTO codigo_permissoes (id_permissao, descricao) VALUES (4, 'suporte');"</item>
+        <item>"INSERT INTO codigo_permissoes (id_permissao, descricao) VALUES (5, 'prefeitura');"</item>
+    </string-array>
+
+</resources>

@@ -22,6 +22,9 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import br.edu.ifsp.fbenutti.projetoos.Persistencia.DispositivoDAO;
+import br.edu.ifsp.fbenutti.projetoos.entidades.Dispositivo;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -31,13 +34,13 @@ public class MainActivity extends ActionBarActivity {
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
     /**
-     * Substitute you own sender ID here. This is the project number you got
-     * from the API Console, as described in "Getting Started."
+     * Substitua com o seu próprio SenderID. Esse é o número de projeto que vc acha
+     * no console da API, como descrito em "Getting Started."
      */
     String SENDER_ID = "497051113268";
 
     /**
-     * Tag used on log messages.
+     * Tag usada nas mensagens de log
      */
     static final String TAG = "GCM Demo";
 
@@ -59,11 +62,18 @@ public class MainActivity extends ActionBarActivity {
         mDisplay = (TextView) findViewById(R.id.txtSync);
         context = getApplicationContext();
 
-        // Check device for Play Services APK. If check succeeds, proceed with GCM registration.
+        // Faz checagem se o dispositivo tem o APK do Play Services.
+        // Se a checagem foi bem sucedida, prossegue com o registro no GCM.
         if (checkPlayServices()) {
 
             gcm = GoogleCloudMessaging.getInstance(this);
             regid = getRegistrationId(context);
+
+            Dispositivo dispositivo = new Dispositivo();
+            dispositivo.setAndroid_genkey(regid);
+
+            DispositivoDAO dispositivoDAO = new DispositivoDAO(context);
+            sendRegistrationIdToBackend(dispositivoDAO, dispositivo);
 
             if (regid.isEmpty()) {
                 registerInBackground();
@@ -77,13 +87,13 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Check device for Play Services APK.
+        // Faz checagem se o dispositivo tem o APK do Play Services.
         checkPlayServices();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Infla o menu; esse comando adiciona itens à barra de ações se essa estiver habilitada
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -133,9 +143,9 @@ public class MainActivity extends ActionBarActivity {
     //region Implementações GCM
 
     /**
-     * Check the device to make sure it has the Google Play Services APK. If
-     * it doesn't, display a dialog that allows users to download the APK from
-     * the Google Play Store or enable it in the device's system settings.
+     * Faz checagem no dispositivo para ter certeza de que tem o Google Play Services APK.
+     * Se não tiver, mostra uma mensagem que permite ao usuário fazer o download do APK
+     * diretamente da loja ou habilitá-lo nos configurações do dispositivo.
      */
     private boolean checkPlayServices() {
 
@@ -161,7 +171,7 @@ public class MainActivity extends ActionBarActivity {
      * Stores the registration ID and the app versionCode in the application's
      * {@code SharedPreferences}.
      *
-     * @param context application's context.
+     * @param context context da aplicação.
      * @param regId registration ID
      */
     private void storeRegistrationId(Context context, String regId) {
@@ -187,10 +197,16 @@ public class MainActivity extends ActionBarActivity {
         final SharedPreferences prefs = getGcmPreferences(context);
 
         String registrationId = prefs.getString(PROPERTY_REG_ID, "");
-        if (registrationId.isEmpty()) {
-            Log.i(TAG, "Registration not found.");
-            return "";
+        try {
+            if (registrationId.isEmpty()) {
+                Log.i(TAG, "Registration not found.");
+                return "";
+            }
         }
+        catch (NullPointerException ex){
+            Log.i(TAG, "registrationId object is null!");
+        }
+
         // Check if app was updated; if so, it must clear the registration ID
         // since the existing regID is not guaranteed to work with the new
         // app version.
@@ -214,7 +230,7 @@ public class MainActivity extends ActionBarActivity {
         new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
-                String msg = "";
+                String msg;
                 try {
                     if (gcm == null) {
                         gcm = GoogleCloudMessaging.getInstance(context);
@@ -226,7 +242,13 @@ public class MainActivity extends ActionBarActivity {
 
                     // You should send the registration ID to your server over HTTP, so it
                     // can use GCM/HTTP or CCS to send messages to your app.
-                    sendRegistrationIdToBackend();
+                    //TODO
+                    //Dispositivo dispositivo = new Dispositivo();
+                    //dispositivo.setAndroid_genkey(regid);
+
+                    //DispositivoDAO dispositivoDAO = new DispositivoDAO(context);
+                    //sendRegistrationIdToBackend(dispositivoDAO, dispositivo);
+                    //sendRegistrationIdToBackend();
 
                     // For this demo: we don't need to send it because the device will send
                     // upstream messages to a server that echo back the message using the
@@ -257,14 +279,14 @@ public class MainActivity extends ActionBarActivity {
             new AsyncTask<Void, Void, String>() {
                 @Override
                 protected String doInBackground(Void... params) {
-                    String msg = "";
+                    String msg;
                     try {
                         Bundle data = new Bundle();
                         data.putString("my_message", "Hello World");
                         data.putString("my_action", "com.google.android.gcm.demo.app.ECHO_NOW");
                         String id = Integer.toString(msgId.incrementAndGet());
                         gcm.send(SENDER_ID + "@gcm.googleapis.com", id, data);
-                        msg = "Sent message";
+                        msg = "Sent message:\n" + data.toString();
                     } catch (IOException ex) {
                         msg = "Error :" + ex.getMessage();
                     }
@@ -314,8 +336,8 @@ public class MainActivity extends ActionBarActivity {
      * messages to your app. Not needed for this demo since the device sends upstream messages
      * to a server that echoes back the message using the 'from' address in the message.
      */
-    private void sendRegistrationIdToBackend() {
-        // Your implementation here.
+    private void sendRegistrationIdToBackend(DispositivoDAO dao, Dispositivo disp) {
+        dao.salvarWS(disp);
     }
 
     //endregion

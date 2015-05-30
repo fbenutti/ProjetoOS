@@ -5,6 +5,7 @@ package br.edu.ifsp.fbenutti.projetoos.entidades;
  */
 public class Os extends objBase {
     private int id_os;
+    private Dispositivo dispositivo;
     private Status status;
     private Nivel nivel;
     private Prioridade prioridade;
@@ -15,10 +16,10 @@ public class Os extends objBase {
     private String nome_cliente;
     private String telefone;
     private double tempo_estimado;
-    private int dt_abertura;
-    private int dt_resolucao;
-    private int dt_retorno;
-    private int dt_prazo;
+    private String dt_abertura;
+    private String dt_resolucao;
+    private String dt_retorno;
+    private String dt_prazo;
 
    
 
@@ -35,6 +36,14 @@ public class Os extends objBase {
 
     public void setId_os(int id_os) {
         this.id_os = id_os;
+    }
+
+    public Dispositivo getDispositivo() {
+        return dispositivo;
+    }
+
+    public void setDispositivo(Dispositivo dispositivo) {
+        this.dispositivo = dispositivo;
     }
 
     public Usuario getUsuario() {
@@ -117,35 +126,35 @@ public class Os extends objBase {
         this.tempo_estimado = tempo_estimado;
     }
 
-    public int getDt_abertura() {
+    public String getDt_abertura() {
         return dt_abertura;
     }
 
-    public void setDt_abertura(int dt_abertura) {
+    public void setDt_abertura(String dt_abertura) {
         this.dt_abertura = dt_abertura;
     }
 
-    public int getDt_resolucao() {
+    public String getDt_resolucao() {
         return dt_resolucao;
     }
 
-    public void setDt_resolucao(int dt_resolucao) {
+    public void setDt_resolucao(String dt_resolucao) {
         this.dt_resolucao = dt_resolucao;
     }
 
-    public int getDt_retorno() {
+    public String getDt_retorno() {
         return dt_retorno;
     }
 
-    public void setDt_retorno(int dt_retorno) {
+    public void setDt_retorno(String dt_retorno) {
         this.dt_retorno = dt_retorno;
     }
 
-    public int getDt_prazo() {
+    public String getDt_prazo() {
         return dt_prazo;
     }
 
-    public void setDt_prazo(int dt_prazo) {
+    public void setDt_prazo(String dt_prazo) {
         this.dt_prazo = dt_prazo;
     }
 }

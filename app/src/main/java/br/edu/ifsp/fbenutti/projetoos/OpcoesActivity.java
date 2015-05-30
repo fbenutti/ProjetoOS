@@ -18,6 +18,7 @@ public class OpcoesActivity extends ActionBarActivity {
         setContentView(R.layout.activity_opcoes);
 
         addListenerOnButtonListagemOS();
+        //TODO
         //addListenerOnIButtonNovaOS();
     }
 
@@ -44,6 +45,7 @@ public class OpcoesActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //TODO
     public void addListenerOnIButtonNovaOS() {
 
         ImageButton imageButton = (ImageButton) findViewById(R.id.ibtnNovaOS);

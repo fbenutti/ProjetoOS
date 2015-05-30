@@ -51,7 +51,7 @@
             android:value="@integer/google_play_services_version" />
 
         <receiver
-            android:name="br.edu.ifsp.fbenutti.projetoos.GcmBroadcastReceiver"
+            android:name=".GCM.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -59,7 +59,7 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".GcmIntentService" />
+        <service android:name=".GCM.GcmIntentService" />
 
     </application>
 

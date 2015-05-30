@@ -5,9 +5,9 @@ package br.edu.ifsp.fbenutti.projetoos.entidades;
  */
 public class objBase {
     private Integer id_usuario_inc;
-    private Integer dt_inc;
+    private String dt_inc;
     private Integer id_usuario_alt;
-    private Integer dt_alt;
+    private String dt_alt;
 
     public objBase() {
     }
@@ -20,11 +20,11 @@ public class objBase {
         this.id_usuario_inc = id_usuario_inc;
     }
 
-    public int getDt_inc() {
+    public String getDt_inc() {
         return dt_inc;
     }
 
-    public void setDt_inc(int dt_inc) {
+    public void setDt_inc(String dt_inc) {
         this.dt_inc = dt_inc;
     }
 
@@ -36,11 +36,11 @@ public class objBase {
         this.id_usuario_alt = id_usuario_alt;
     }
 
-    public int getDt_alt() {
+    public String getDt_alt() {
         return dt_alt;
     }
 
-    public void setDt_alt(int dt_alt) {
+    public void setDt_alt(String dt_alt) {
         this.dt_alt = dt_alt;
     }
 }
